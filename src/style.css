@@ -132,3 +132,45 @@ input{
     flex:6;
     padding:5px;
 }
+
+.insert-section-row{
+    margin:5px;
+    padding:3px;
+}
+
+.insert-section-row>label::after{
+    content:": ";
+}
+
+.insert-section{
+    margin:5px;
+    padding:3px;
+}
+
+.insert-section::before{
+    content:"Dodaj wpis:";
+}
+.home-tiles{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.page-home-tile:not(.locked){
+    flex: 1 0 31%;
+    margin:5px;
+}
+
+.page-home-tile:not(.locked):hover{
+    color:black;
+    transform:scale(1.05);
+}
+
+.page-home-tile .page-tile-icon{
+    font-size:3rem;
+}
+
+main h3{
+    text-align: center;
+}

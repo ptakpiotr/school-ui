@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { ISubjectDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
-/**                 id:number;
-    nazwa_przedmiotu:string;
-    sala_id:number; */
+
 function SubjectInsertSection() {
   const [value, setValue] = useState<ISubjectDTO>({
     id: -1,
@@ -13,28 +11,39 @@ function SubjectInsertSection() {
   const handleClick = () => {
     addOne("Subject", value);
   };
+
+  //<div className="insert-section-row">
   return (
     <div className="insert-section">
       <div>
-        <input
-          type="text"
-          value={value?.nazwa_przedmiotu}
-          onChange={(e) => {
-            setValue((prev: ISubjectDTO | undefined) => {
-              return { ...prev!, nazwa_przedmiotu: e.target.value };
-            });
-          }}
-          placeholder="Id ucznia"
-        />
-        <input
-          type="number"
-          value={value?.sala_id}
-          onChange={(e) => {
-            setValue((prev: ISubjectDTO | undefined) => {
-              return { ...prev!, sala_id: parseInt(e.target.value) };
-            });
-          }}
-        />
+        <div className="insert-section-row">
+          <label htmlFor="nazwa_przedmiotu">Nazwa przedmiotu</label>
+          <input
+            type="text"
+            value={value?.nazwa_przedmiotu}
+            onChange={(e) => {
+              setValue((prev: ISubjectDTO | undefined) => {
+                return { ...prev!, nazwa_przedmiotu: e.target.value };
+              });
+            }}
+            name="nazwa_przedmiotu"
+            title="Nazwa przedmiotu"
+          />
+        </div>
+        <div className="insert-section-row">
+          <label htmlFor="sala_id">Id sali</label>
+          <input
+            type="number"
+            value={value?.sala_id}
+            onChange={(e) => {
+              setValue((prev: ISubjectDTO | undefined) => {
+                return { ...prev!, sala_id: parseInt(e.target.value) };
+              });
+            }}
+            name="sala_id"
+            title="Id sali"
+          />
+        </div>
       </div>
       <button onClick={handleClick}>Add</button>
     </div>

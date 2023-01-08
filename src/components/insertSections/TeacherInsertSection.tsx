@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { ITeacherDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
-/**                     imie:string;
-    nazwisko:string; */
+
 function TeacherInsertSection() {
   const [value, setValue] = useState<ITeacherDTO>({
     imie: "",
-    nazwisko: ""
+    nazwisko: "",
   });
   const handleClick = () => {
     addOne("Teacher", value);
@@ -14,16 +13,22 @@ function TeacherInsertSection() {
   return (
     <div className="insert-section">
       <div>
-        <input
-          type="text"
-          value={value?.imie}
-          onChange={(e) => {
-            setValue((prev: ITeacherDTO | undefined) => {
-              return { ...prev!, imie: e.target.value };
-            });
-          }}
-          placeholder="Id ucznia"
-        />
+        <div className="insert-section-row">
+          <label htmlFor="imie">Imię</label>
+          <input
+            type="text"
+            value={value?.imie}
+            onChange={(e) => {
+              setValue((prev: ITeacherDTO | undefined) => {
+                return { ...prev!, imie: e.target.value };
+              });
+            }}
+            name="imie"
+            title="Imie"
+          />
+        </div>
+        <div className="insert-section-row">
+        <label htmlFor="nazwisko">Nazwisko</label>
         <input
           type="number"
           value={value?.nazwisko}
@@ -32,7 +37,10 @@ function TeacherInsertSection() {
               return { ...prev!, nazwisko: e.target.value };
             });
           }}
+          name="nazwisko"
+          title="Nazwisko"
         />
+        </div>
       </div>
       <button onClick={handleClick}>Add</button>
     </div>

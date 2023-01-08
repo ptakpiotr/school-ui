@@ -1,18 +1,16 @@
 import React, {
   useState,
   useRef,
-  useEffect,
-  useMemo,
-  useCallback,
+  useEffect
 } from "react";
 import { AgGridReact } from "ag-grid-react";
-import { AgEvent } from "ag-grid-community";
-import axios from "axios";
-import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
-import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
+import "ag-grid-community/styles/ag-grid.css"; 
+import "ag-grid-community/styles/ag-theme-alpine.css"; 
+
+import {FaTrash,FaSearch} from "react-icons/fa";
 import { IColumnDef, IEndpoint, Methods } from "../../Types";
-import { addOne, deleteOne, getAllData, getOne } from "../../axiosHelpers";
-import getFormType from "../../utils/getFormType";
+import { deleteOne, getAllData, getOne } from "../../axiosHelpers";
+
 interface IProps<T, U> {
   endpoints: IEndpoint[];
   insertSection:JSX.Element;
@@ -43,10 +41,6 @@ function MyDataGrid<T extends object, U extends object>({
     }
   }, [rowData]);
 
-  const cellClickedListener = useCallback((event: AgEvent) => {
-    console.log("cellClicked", event);
-  }, []);
-
   const getOneRecord = () => {
     if (id) {
       getOne(
@@ -72,15 +66,14 @@ function MyDataGrid<T extends object, U extends object>({
       <div className="my-grid">
         <div
           className="ag-theme-alpine"
-          style={{ width: "80vw", height: "40vh" }}
+          style={{ width: "70vw", height: "40vh" }}
         >
           <AgGridReact
             ref={gridRef}
-            rowData={rowData} // Row Data for Rows
-            columnDefs={columnDefs} // Column Defs for Columns
-            animateRows={true} // Optional - set to 'true' to have rows animate when sorted
-            rowSelection="multiple" // Options - allows click selection of rows
-            onCellClicked={cellClickedListener} // Optional - registering for Grid Event
+            rowData={rowData} 
+            columnDefs={columnDefs}
+            animateRows={true}
+            rowSelection="multiple"
           />
         </div>
         <div className="my-grid-actions-center">
@@ -94,7 +87,7 @@ function MyDataGrid<T extends object, U extends object>({
                   setId(parseInt(e.target.value));
                 }}
               />
-              <button onClick={getOneRecord}>Search</button>
+              <button onClick={getOneRecord}>Search <FaSearch /></button>
             </span>
           ) : (
             <></>
@@ -102,14 +95,14 @@ function MyDataGrid<T extends object, U extends object>({
           <span>
             <input
               type="number"
-              placeholder="Id to delete"
+              placeholder="Id do usunięcia"
               value={deleteId}
               onChange={(e) => {
                 setDeleteId(parseInt(e.target.value));
               }}
             />
             <button className="danger-btn" onClick={deleteOneRecord}>
-              Search
+              Delete <FaTrash />
             </button>
           </span>
         </div>
