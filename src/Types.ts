@@ -7,9 +7,9 @@ export interface IPageTile{
 
 export interface IAttendanceModel{
     id:number;
-    uczen_id:string;
+    uczen_id:number;
     obecny:boolean;
-    data:Date;
+    data:string;
 }
 
 export enum Methods{
@@ -64,8 +64,8 @@ export interface IPaymentDTO{
 
 export interface IScheduleModel{
     id:number;
-    terminOd:Date;
-    terminDo:Date;
+    terminOd:string;
+    terminDo:string;
     przedmiotOddzialId:number;
     klasaId:number;
     przedmiotId:number;
@@ -73,8 +73,8 @@ export interface IScheduleModel{
 
 export interface IScheduleDTO{
     przedmiot_oddzial_id:number;
-    terminOd:Date;
-    terminDo:Date;
+    terminOd:string;
+    terminDo:string;
 }
 
 export interface ISubjectModel{
@@ -92,7 +92,7 @@ export interface ISubjectDTO{
 export interface IStudentModel{
     id:number;
     imie:string;
-    nazwisko:string;
+    nazwisko:string;    
     rok:number;
 }
 

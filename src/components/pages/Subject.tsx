@@ -1,11 +1,7 @@
-import React from 'react'
-import {
-  IEndpoint,
-  ISubjectDTO,
-  ISubjectModel,
-  Methods,
-} from "../../Types";
+import React from "react";
+import { IEndpoint, ISubjectDTO, ISubjectModel, Methods } from "../../Types";
 import MyDataGrid from "../common/MyDataGrid";
+import SubjectInsertSection from "../insertSections/SubjectInsertSection";
 function Subject() {
   const endpoints: IEndpoint[] = [
     {
@@ -32,11 +28,11 @@ function Subject() {
         <summary>Ogólne informacje o przedmiotach</summary>
         <MyDataGrid<ISubjectModel, ISubjectDTO>
           endpoints={endpoints}
-          insertSection={<></>}
+          insertSection={<SubjectInsertSection />}
         />
       </details>
     </main>
   );
 }
 
-export default Subject
+export default Subject;

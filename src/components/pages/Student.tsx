@@ -6,6 +6,7 @@ import {
   Methods,
 } from "../../Types";
 import MyDataGrid from "../common/MyDataGrid";
+import StudentInsertSection from '../insertSections/StudentInsertSection';
 function Student() {
   const endpoints: IEndpoint[] = [
     {
@@ -32,7 +33,7 @@ function Student() {
         <summary>Ogólne informacje o studentach</summary>
         <MyDataGrid<IStudentModel, IStudentDTO>
           endpoints={endpoints}
-          insertSection={<></>}
+          insertSection={<StudentInsertSection/>}
         />
       </details>
     </main>

@@ -6,6 +6,7 @@ import {
   Methods,
 } from "../../Types";
 import MyDataGrid from "../common/MyDataGrid";
+import ScheduleInsertSection from '../insertSections/ScheduleInsertSection';
 function Schedule() {
   const endpoints: IEndpoint[] = [
     {
@@ -32,7 +33,7 @@ function Schedule() {
         <summary>Ogólne informacje o planie zajęć</summary>
         <MyDataGrid<IScheduleModel, IScheduleDTO>
           endpoints={endpoints}
-          insertSection={<></>}
+          insertSection={<ScheduleInsertSection/>}
         />
       </details>
     </main>

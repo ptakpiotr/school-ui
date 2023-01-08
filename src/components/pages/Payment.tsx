@@ -1,11 +1,7 @@
-import React from 'react'
-import {
-  IEndpoint,
-  IPaymentDTO,
-  IPaymentModel,
-  Methods,
-} from "../../Types";
+import React from "react";
+import { IEndpoint, IPaymentDTO, IPaymentModel, Methods } from "../../Types";
 import MyDataGrid from "../common/MyDataGrid";
+import PaymentInsertSection from "../insertSections/PaymentInsertSection";
 
 function Payment() {
   const endpoints: IEndpoint[] = [
@@ -33,11 +29,11 @@ function Payment() {
         <summary>Ogólne informacje o płatnościach</summary>
         <MyDataGrid<IPaymentModel, IPaymentDTO>
           endpoints={endpoints}
-          insertSection={<></>}
+          insertSection={<PaymentInsertSection />}
         />
       </details>
     </main>
   );
 }
 
-export default Payment
+export default Payment;

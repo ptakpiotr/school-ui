@@ -7,6 +7,7 @@ import {
   Methods,
 } from "../../Types";
 import MyDataGrid from "../common/MyDataGrid";
+import GradeInsertSection from '../insertSections/GradeInsertSection';
 
 function Grade() {
   const endpoints: IEndpoint[] = [
@@ -34,7 +35,7 @@ function Grade() {
         <summary>Ogólne informacje o ocenach</summary>
         <MyDataGrid<IGradeModel, IGradeModel>
           endpoints={endpoints}
-          insertSection={<></>}
+          insertSection={<GradeInsertSection/>}
         />
       </details>
     </main>
