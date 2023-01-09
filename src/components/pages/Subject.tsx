@@ -1,5 +1,6 @@
 import React from "react";
-import { IEndpoint, ISubjectDTO, ISubjectModel, Methods } from "../../Types";
+import { IEndpoint, ISubjectDetailedModel, ISubjectDTO, ISubjectModel, Methods } from "../../Types";
+import CustomReadGrid from "../common/CustomReadGrid";
 import MyDataGrid from "../common/MyDataGrid";
 import SubjectInsertSection from "../insertSections/SubjectInsertSection";
 function Subject() {
@@ -29,6 +30,16 @@ function Subject() {
         <MyDataGrid<ISubjectModel, ISubjectDTO>
           endpoints={endpoints}
           insertSection={<SubjectInsertSection />}
+        />
+      </details>
+
+      <details>
+        <summary>Szczegółowe informacje o przedmiotach</summary>
+        <CustomReadGrid<ISubjectDetailedModel>
+          endpoint={{
+            method:Methods.GET,
+            main:"Subject/detailed"
+          }}
         />
       </details>
     </main>

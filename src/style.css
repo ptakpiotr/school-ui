@@ -105,6 +105,7 @@ input{
     background-color: transparent;
     background-color: white;
     border:1px solid darkslategray;
+    padding:5px;
     border-radius: 5%;
 }
 
@@ -173,4 +174,17 @@ input{
 
 main h3{
     text-align: center;
+}
+
+.apply-btn{
+    background-color: darkcyan;
+}
+
+.clear-filters-btn{
+    margin:10px;
+    background-color: gray;
+}
+
+.clear-filters-btn:hover{
+    background-color: darkslategray;
 }

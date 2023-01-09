@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 import {
   IClassDTO,
   IClassModel,
   IEndpoint,
   IGradeModel,
+  IGroupedGradesModel,
+  IStudentGradesModel,
   Methods,
 } from "../../Types";
+import CustomFullGrid from "../common/CustomFullGrid";
 import MyDataGrid from "../common/MyDataGrid";
-import GradeInsertSection from '../insertSections/GradeInsertSection';
+import GradeInsertSection from "../insertSections/GradeInsertSection";
 
 function Grade() {
   const endpoints: IEndpoint[] = [
@@ -29,17 +32,55 @@ function Grade() {
     },
   ];
 
+  const customEndpointsGroupedGrades: IEndpoint[] = [
+    {
+      method: Methods.GETSINGLE,
+      main: "Grade/grouped",
+    },
+  ];
+
+  const customEndpointsGetStudentGrades: IEndpoint[] = [
+    {
+      method: Methods.GETSINGLE,
+      main: "Grade/studentGrades",
+    },
+  ];
+
   return (
     <main>
       <details>
         <summary>Ogólne informacje o ocenach</summary>
         <MyDataGrid<IGradeModel, IGradeModel>
           endpoints={endpoints}
-          insertSection={<GradeInsertSection/>}
+          insertSection={<GradeInsertSection />}
+        />
+      </details>
+      <details>
+        <summary>Pogrupowane oceny według uczniów bądź rodzaju pracy</summary>
+        <CustomFullGrid<IGroupedGradesModel, number>
+          endpoints={customEndpointsGroupedGrades}
+          searchParamName=""
+          filtersSection={[
+            {
+              fieldName: "classId",
+              value: -1,
+            },
+            {
+              fieldName: "np",
+              value: "",
+            },
+          ]}
+        />
+      </details>
+      <details>
+        <summary>Oceny konkretnego studenta</summary>
+        <CustomFullGrid<IStudentGradesModel, number>
+          endpoints={customEndpointsGetStudentGrades}
+          searchParamName="id"
         />
       </details>
     </main>
   );
 }
 
-export default Grade
+export default Grade;

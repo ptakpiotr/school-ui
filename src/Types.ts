@@ -8,6 +8,14 @@ export interface IPageTile {
 
 export interface IAttendanceModel {
   id: number;
+  imie:string;
+  nazwisko:string;
+  obecny: boolean;
+  data: string;
+}
+
+export interface IAttendanceDTO {
+  id: number;
   uczen_id: number;
   obecny: boolean;
   data: string;
@@ -53,7 +61,8 @@ export interface IGradeModel {
 export interface IPaymentModel {
   id: number;
   powod: string;
-  uczenid: number;
+  imie:string;
+  nazwisko:string;
   wartosc: number;
 }
 
@@ -67,9 +76,8 @@ export interface IScheduleModel {
   id: number;
   terminOd: string;
   terminDo: string;
-  przedmiotOddzialId: number;
-  klasaId: number;
-  przedmiotId: number;
+  przedmiot: string;
+  rok: number;
 }
 
 export interface IScheduleDTO {
@@ -134,4 +142,40 @@ export interface IRoomDTO {
 
 export interface IPagesContextData {
   pages: IPageTile[];
+}
+
+export interface ISubjectDetailedModel {
+  id: number;
+  rok: number;
+  imieNazwiskoNauczyciela: string;
+  nazwaPrzedmiotu: string;
+}
+
+export interface IAttendancePerClassModel {
+  imie: string;
+  nazwisko: string;
+  rok: number;
+  obecny: boolean;
+  data: Date;
+}
+
+
+export interface IValueFilter<T> {
+  fieldName:string;
+  value:T;
+}
+
+export interface IGroupedGradesModel{
+  ocena:number;
+  uoid:number;
+  nazwaPracy:string;
+  uczenId:number;
+  klasaId:number;
+}
+
+export interface IStudentGradesModel{
+  ocena:number;
+  nazwaPracy:string;
+  uczenId:number;
+  przedmiotOddzialId:number;
 }

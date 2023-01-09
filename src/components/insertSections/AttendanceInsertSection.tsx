@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { IAttendanceModel } from "../../Types";
+import { IAttendanceDTO } from "../../Types";
 import dayjs from "dayjs";
 import { addOne } from "../../axiosHelpers";
 function AttendanceInsertSection() {
-  const [value, setValue] = useState<IAttendanceModel>({
+  const [value, setValue] = useState<IAttendanceDTO>({
     id: -1,
     data: "",
     obecny: false,
@@ -21,7 +21,7 @@ function AttendanceInsertSection() {
             type="text"
             value={value?.uczen_id}
             onChange={(e) => {
-              setValue((prev: IAttendanceModel | undefined) => {
+              setValue((prev: IAttendanceDTO | undefined) => {
                 return { ...prev!, uczen_id: parseInt(e.target.value) };
               });
             }}
@@ -35,7 +35,7 @@ function AttendanceInsertSection() {
             type="checkbox"
             value={value?.obecny.toString()}
             onChange={(e) => {
-              setValue((prev: IAttendanceModel | undefined) => {
+              setValue((prev: IAttendanceDTO | undefined) => {
                 return { ...prev!, obecny: Boolean(e.target.value) };
               });
             }}
@@ -49,7 +49,7 @@ function AttendanceInsertSection() {
             type="datetime-local"
             value={value?.data.toString()}
             onChange={(e) => {
-              setValue((prev: IAttendanceModel | undefined) => {
+              setValue((prev: IAttendanceDTO | undefined) => {
                 const d = dayjs(e.target.value).format("YYYY-MM-DDThh:mm:ss");
                 return { ...prev!, data: d };
               });

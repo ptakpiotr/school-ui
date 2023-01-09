@@ -1,9 +1,9 @@
-export default function getFormType(fieldName: string, fieldType: string) {
-  if (fieldType === "boolean") {
+export default function getFormType<T>(fieldName: string, field: T) {
+  if (typeof field === "boolean") {
     return "checkbox";
   } else if (fieldName.startsWith("dat")) {
     return "date";
   } else {
-    return fieldType;
+    return typeof field;
   }
 }
