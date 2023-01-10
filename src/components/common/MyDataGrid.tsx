@@ -1,7 +1,8 @@
 import React, {
   useState,
   useRef,
-  useEffect
+  useEffect,
+  useContext
 } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css"; 
@@ -10,15 +11,18 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import {FaTrash,FaSearch} from "react-icons/fa";
 import { IColumnDef, IEndpoint, Methods } from "../../Types";
 import { deleteOne, getAllData, getOne } from "../../axiosHelpers";
+import { ExceptionDetailsContext } from "../../App";
 
 interface IProps<T, U> {
   endpoints: IEndpoint[];
   insertSection:JSX.Element;
+  description:string;
 }
 
 function MyDataGrid<T extends object, U extends object>({
   endpoints,
   insertSection,
+  description
 }: IProps<T, U>) {
   const gridRef = useRef<AgGridReact>(null);
   const [rowData, setRowData] = useState<T[]>();
@@ -26,6 +30,8 @@ function MyDataGrid<T extends object, U extends object>({
   const [deleteId, setDeleteId] = useState<number>();
 
   const [columnDefs, setColumnDefs] = useState<IColumnDef[]>([]);
+  const {message,setMessage} = useContext(ExceptionDetailsContext);
+
   useEffect(() => {
     getAllData(
       setRowData,
@@ -52,17 +58,19 @@ function MyDataGrid<T extends object, U extends object>({
   };
 
   const deleteOneRecord = () => {
-    if (deleteId) {
+    if (deleteId && setMessage) {
       deleteOne(
         setRowData,
         endpoints.find((e) => e.method === Methods.DELETE)?.main,
-        deleteId
+        deleteId,
+        setMessage
       );
     }
   };
   
   return (
     <>
+      <h6>{description}</h6>
       <div className="my-grid">
         <div
           className="ag-theme-alpine"
@@ -110,6 +118,7 @@ function MyDataGrid<T extends object, U extends object>({
       <div>
        {insertSection}
       </div>
+      <div className="error-box">{message}</div>
     </>
   );
 }

@@ -62,6 +62,7 @@ nav{
 .no-lock{
     height: 1rem;
 }
+
 details{
     padding:5px;
     margin:5px;
@@ -123,6 +124,12 @@ input{
     padding:5px;
 }
 
+.my-grid-actions-center::before{
+    content:"Centrum akcji:";
+    font-size:0.75rem;
+    font-weight:bold;
+}
+
 .my-grid-form{
     display:flex;
     flex-direction: row;
@@ -150,6 +157,8 @@ input{
 
 .insert-section::before{
     content:"Dodaj wpis:";
+    font-size:0.75rem;
+    font-weight: bold;
 }
 .home-tiles{
     display: flex;
@@ -187,4 +196,14 @@ main h3{
 
 .clear-filters-btn:hover{
     background-color: darkslategray;
+}
+label{
+    font-size:0.75rem;
+}
+
+.custom-dropdown{
+    display: inline-block;
+}
+.error-box{
+    color:tomato;
 }

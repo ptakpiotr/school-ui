@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IScheduleDTO } from "../../Types";
 import dayjs from "dayjs";
 import { addOne } from "../../axiosHelpers";
+import { ExceptionDetailsContext } from "../../App";
 
 function ScheduleInsertSection() {
   const [value, setValue] = useState<IScheduleDTO>({
@@ -9,8 +10,13 @@ function ScheduleInsertSection() {
     terminOd: "",
     terminDo: "",
   });
+
+  const { setMessage } = useContext(ExceptionDetailsContext);
+
   const handleClick = () => {
-    addOne("Schedule", value);
+    if(setMessage){
+      addOne("Schedule", value,setMessage);
+    }
   };
   return (
     <div className="insert-section">

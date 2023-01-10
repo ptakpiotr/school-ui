@@ -73,7 +73,8 @@ export function getManyWithoutGeneric<T>(
 export function deleteOne<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
-  id: number
+  id: number,
+  setMsg:React.Dispatch<React.SetStateAction<string>>
 ) {
   axios
     .delete(`${process.env.REACT_APP_BACKEND_URL}${endpoint}/${id}`)
@@ -85,16 +86,16 @@ export function deleteOne<T>(
             setData(dt.data);
           })
           .catch((err) => {
-            console.error(err);
+            setMsg(err.message);
           });
       }
     })
     .catch((err) => {
-      console.error(err);
+      setMsg(err.message);
     });
 }
 
-export function addOne<T>(endpoint: string | undefined, value: T) {
+export function addOne<T>(endpoint: string | undefined, value: T,setMsg:React.Dispatch<React.SetStateAction<string>>) {
   axios
     .post(`${process.env.REACT_APP_BACKEND_URL}${endpoint}`, value)
     .then((dt) => {
@@ -103,7 +104,8 @@ export function addOne<T>(endpoint: string | undefined, value: T) {
       }
     })
     .catch((err) => {
-      console.error(err);
+      // console.error(err);
+      setMsg(err.message);
     });
 }
 //DOMPurify.sanitize()

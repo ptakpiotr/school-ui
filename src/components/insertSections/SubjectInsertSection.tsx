@@ -1,18 +1,38 @@
-import React, { useState } from "react";
-import { ISubjectDTO } from "../../Types";
+import React, { useContext, useState } from "react";
+import { IRoomModel, ISubjectDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
+import { useEffect } from "react";
+import axios from "axios";
+import ReactDropdown from "react-dropdown";
+import 'react-dropdown/style.css';
+import { ExceptionDetailsContext } from "../../App";
 
 function SubjectInsertSection() {
   const [value, setValue] = useState<ISubjectDTO>({
     id: -1,
     nazwa_przedmiotu: "",
-    sala_id: -1,
+    numer_sali: "",
   });
+
+  const { setMessage } = useContext(ExceptionDetailsContext);
+
+  const [rooms,setRooms] = useState<IRoomModel[]>([]);
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}Misc/room`).then((dt)=>{
+      if(dt.status === 200){
+        setRooms(dt.data);
+      }
+    }).catch((err)=>{
+      console.error(err);
+    });
+  },[]);
+
   const handleClick = () => {
-    addOne("Subject", value);
+    if(setMessage){
+      addOne("Subject", value,setMessage);
+    }
   };
 
-  //<div className="insert-section-row">
   return (
     <div className="insert-section">
       <div>
@@ -31,18 +51,12 @@ function SubjectInsertSection() {
           />
         </div>
         <div className="insert-section-row">
-          <label htmlFor="sala_id">Id sali</label>
-          <input
-            type="number"
-            value={value?.sala_id}
-            onChange={(e) => {
+          <label>Numer sali</label>
+          <ReactDropdown options={rooms.map(r=>r.numerSali)} className='custom-dropdown'             onChange={(e) => {
               setValue((prev: ISubjectDTO | undefined) => {
-                return { ...prev!, sala_id: parseInt(e.target.value) };
+                return { ...prev!, numer_sali: (e.value) };
               });
-            }}
-            name="sala_id"
-            title="Id sali"
-          />
+            }} value={value.numer_sali} />
         </div>
       </div>
       <button onClick={handleClick}>Add</button>

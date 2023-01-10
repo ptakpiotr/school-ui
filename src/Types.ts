@@ -95,7 +95,7 @@ export interface ISubjectModel {
 export interface ISubjectDTO {
   id: number;
   nazwa_przedmiotu: string;
-  sala_id: number;
+  numer_sali: string;
 }
 
 export interface IStudentModel {
@@ -178,4 +178,9 @@ export interface IStudentGradesModel{
   nazwaPracy:string;
   uczenId:number;
   przedmiotOddzialId:number;
+}
+
+export interface IExceptionDetails{
+  message:string;
+  setMessage?:React.Dispatch<React.SetStateAction<string>>;
 }

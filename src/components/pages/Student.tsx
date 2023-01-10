@@ -34,6 +34,7 @@ function Student() {
         <MyDataGrid<IStudentModel, IStudentDTO>
           endpoints={endpoints}
           insertSection={<StudentInsertSection/>}
+          description={"Lista wszystkich studentów"}
         />
       </details>
     </main>

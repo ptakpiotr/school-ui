@@ -26,10 +26,14 @@ import Schedule from "./components/pages/Schedule";
 import Subject from "./components/pages/Subject";
 import Teacher from "./components/pages/Teacher";
 import Student from "./components/pages/Student";
-import { IPagesContextData, IPageTile } from "./Types";
+import { IExceptionDetails, IPagesContextData, IPageTile } from "./Types";
 
 export const PagesContext = React.createContext<IPagesContextData>({
-  pages:[]
+  pages: [],
+});
+
+export const ExceptionDetailsContext = React.createContext<IExceptionDetails>({
+  message: "",
 });
 
 function App() {
@@ -101,27 +105,39 @@ function App() {
       locked: true,
     },
   ]);
+
+  const [message, setMessage] = useState<string>("");
+
   return (
-    <PagesContext.Provider value={{
-      pages
-    }}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/attendance" element={<Attendance />} />
-          <Route path="/class" element={<Class />} />
-          <Route path="/grade" element={<Grade />} />
-          <Route path="/misc" element={<Misc />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/student" element={<Student />} />
-          <Route path="/subject" element={<Subject />} />
-          <Route path="/teacher" element={<Teacher />} />
-        </Routes>
-        <NavBottom />
-      </BrowserRouter>
-    </PagesContext.Provider>
+    <ExceptionDetailsContext.Provider
+      value={{
+        message,
+        setMessage,
+      }}
+    >
+      <PagesContext.Provider
+        value={{
+          pages,
+        }}
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/attendance" element={<Attendance />} />
+            <Route path="/class" element={<Class />} />
+            <Route path="/grade" element={<Grade />} />
+            <Route path="/misc" element={<Misc />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/student" element={<Student />} />
+            <Route path="/subject" element={<Subject />} />
+            <Route path="/teacher" element={<Teacher />} />
+          </Routes>
+          <NavBottom />
+        </BrowserRouter>
+      </PagesContext.Provider>
+    </ExceptionDetailsContext.Provider>
   );
 }
 

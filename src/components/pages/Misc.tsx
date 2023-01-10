@@ -40,6 +40,7 @@ function Misc() {
         <MyDataGrid<IPaymentTypeModel, IPaymentTypeDTO>
           endpoints={paymentTypeEndpoints}
           insertSection={<></>}
+          description={"Lista wszystkich dostępnych metod płatności"}
         />
       </details>
       <details>
@@ -47,6 +48,7 @@ function Misc() {
         <MyDataGrid<IRoomModel, IRoomDTO>
           endpoints={roomEndpoints}
           insertSection={<></>}
+          description={"Lista wszystkich sal w jakie wyposażona jest szkoła"}
         />
       </details>
     </main>

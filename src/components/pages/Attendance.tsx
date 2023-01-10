@@ -39,6 +39,7 @@ function Attendance() {
         <MyDataGrid<IAttendanceModel, IAttendanceModel>
           endpoints={endpoints}
           insertSection={<AttendanceInsertSection />}
+          description={"Rezultaty obecności na podstawie widoku"}
         />
       </details>
       <details>

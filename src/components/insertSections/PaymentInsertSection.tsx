@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IPaymentDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
+import { ExceptionDetailsContext } from "../../App";
 
 function PaymentInsertSection() {
   const [value, setValue] = useState<IPaymentDTO>({
@@ -8,8 +9,13 @@ function PaymentInsertSection() {
     uczen_id: 0,
     wartosc: 0,
   });
+
+  const { setMessage } = useContext(ExceptionDetailsContext);
+
   const handleClick = () => {
-    addOne("Payment", value);
+    if (setMessage) {
+      addOne("Payment", value, setMessage);
+    }
   };
 
   return (

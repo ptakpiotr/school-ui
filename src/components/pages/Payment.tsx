@@ -30,6 +30,7 @@ function Payment() {
         <MyDataGrid<IPaymentModel, IPaymentDTO>
           endpoints={endpoints}
           insertSection={<PaymentInsertSection />}
+          description={"Wszystkie płatności, których dokonali uczniowie"}
         />
       </details>
     </main>

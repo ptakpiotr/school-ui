@@ -53,6 +53,7 @@ function Grade() {
         <MyDataGrid<IGradeModel, IGradeModel>
           endpoints={endpoints}
           insertSection={<GradeInsertSection />}
+          description={"Informacje o ocenach wszystkich uczniów"}
         />
       </details>
       <details>

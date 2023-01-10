@@ -35,6 +35,7 @@ function Class() {
         <MyDataGrid<IClassModel, IClassDTO>
           endpoints={endpoints}
           insertSection={<ClassInsertSection/>}
+          description={"Lista wszystkich klas wraz z imieniem i nazwiskiem wychowawcy"}
         />
       </details>
     </main>

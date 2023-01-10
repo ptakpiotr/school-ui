@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IClassDTO } from "../../Types";
 import dayjs from "dayjs";
 import { addOne } from "../../axiosHelpers";
+import { ExceptionDetailsContext } from "../../App";
 function ClassInsertSection() {
   const [value, setValue] = useState<IClassDTO>({
     rok: 0,
     wychowawca_id: 0,
   });
+
+  const { setMessage } = useContext(ExceptionDetailsContext);
+
   const handleClick = () => {
-    addOne("Class", value);
+    if (setMessage) {
+      addOne("Class", value, setMessage);
+    }
   };
 
   return (

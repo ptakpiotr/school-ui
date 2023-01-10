@@ -8,9 +8,10 @@ import { getAllData } from "../../axiosHelpers";
 
 interface IProps {
   endpoint: IEndpoint;
+  description:string;
 }
 
-function CustomReadGrid<T extends object>({ endpoint }: IProps) {
+function CustomReadGrid<T extends object>({ endpoint,description }: IProps) {
   const gridRef = useRef<AgGridReact>(null);
   const [rowData, setRowData] = useState<T[]>();
 
@@ -28,6 +29,8 @@ function CustomReadGrid<T extends object>({ endpoint }: IProps) {
   }, [rowData]);
 
   return (
+    <>
+    <h6>{description}</h6>
     <div className="my-grid">
       <div
         className="ag-theme-alpine"
@@ -42,6 +45,7 @@ function CustomReadGrid<T extends object>({ endpoint }: IProps) {
         />
       </div>
     </div>
+    </>
   );
 }
 

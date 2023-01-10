@@ -30,7 +30,7 @@ function CustomFullGrid<T extends object, U, W = any>({
   const [searchParam, setSearchParam] = useState<U>();
   const [searchExpression, setSearchExpression] = useState<string>("");
 
-  const [columnDefs, setColumnDefs] = useState<IColumnDef[]>([]);
+  const [columnDefs, setColumnDefs] = useState<IColumnDef[]>([]);  
   useEffect(() => {
     if (!!endpoints.find((e) => e.method === Methods.GET)?.main) {
       getAllData(

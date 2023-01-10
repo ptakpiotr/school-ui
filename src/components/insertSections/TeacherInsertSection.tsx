@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ITeacherDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
+import { ExceptionDetailsContext } from "../../App";
 
 function TeacherInsertSection() {
   const [value, setValue] = useState<ITeacherDTO>({
     imie: "",
     nazwisko: "",
   });
+
+  const { setMessage } = useContext(ExceptionDetailsContext);
+
   const handleClick = () => {
-    addOne("Teacher", value);
+    if(setMessage){
+      addOne("Teacher", value,setMessage);
+    }
   };
   return (
     <div className="insert-section">

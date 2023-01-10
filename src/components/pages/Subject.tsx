@@ -30,6 +30,7 @@ function Subject() {
         <MyDataGrid<ISubjectModel, ISubjectDTO>
           endpoints={endpoints}
           insertSection={<SubjectInsertSection />}
+          description={"Lista wszystkich przedmiotów wraz ze salami, w których odbywają się zajęcia"}
         />
       </details>
 
@@ -40,6 +41,7 @@ function Subject() {
             method:Methods.GET,
             main:"Subject/detailed"
           }}
+          description={"Szczegółowe informacje o przedmiocie m.in. nauczyciel prowadzący dany przedmiot"}
         />
       </details>
     </main>

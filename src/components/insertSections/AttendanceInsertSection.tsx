@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IAttendanceDTO } from "../../Types";
 import dayjs from "dayjs";
 import { addOne } from "../../axiosHelpers";
+import { ExceptionDetailsContext } from "../../App";
 function AttendanceInsertSection() {
   const [value, setValue] = useState<IAttendanceDTO>({
     id: -1,
@@ -9,8 +10,12 @@ function AttendanceInsertSection() {
     obecny: false,
     uczen_id: -1,
   });
+  const { setMessage } = useContext(ExceptionDetailsContext);
+
   const handleClick = () => {
-    addOne("Attendance", value);
+    if (setMessage) {
+      addOne("Attendance", value, setMessage);
+    }
   };
   return (
     <div className="insert-section">

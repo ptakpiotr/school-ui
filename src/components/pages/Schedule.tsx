@@ -34,6 +34,7 @@ function Schedule() {
         <MyDataGrid<IScheduleModel, IScheduleDTO>
           endpoints={endpoints}
           insertSection={<ScheduleInsertSection/>}
+          description={"Podział godzin wraz z informacjami dla którego roku występuje dany przedmiot"}
         />
       </details>
     </main>

@@ -34,6 +34,7 @@ function Teacher() {
         <MyDataGrid<ITeacherModel, ITeacherDTO>
           endpoints={endpoints}
           insertSection={<TeacherInsertSection/>}
+          description={"Lista wszystkich nauczycieli"}
         />
       </details>
     </main>
