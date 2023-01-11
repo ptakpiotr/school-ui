@@ -17,12 +17,14 @@ interface IProps<T, U> {
   endpoints: IEndpoint[];
   insertSection:JSX.Element;
   description:string;
+  protectedComponent?:boolean;
 }
 
 function MyDataGrid<T extends object, U extends object>({
   endpoints,
   insertSection,
-  description
+  description,
+  protectedComponent
 }: IProps<T, U>) {
   const gridRef = useRef<AgGridReact>(null);
   const [rowData, setRowData] = useState<T[]>();
@@ -35,7 +37,8 @@ function MyDataGrid<T extends object, U extends object>({
   useEffect(() => {
     getAllData(
       setRowData,
-      endpoints.find((e) => e.method === Methods.GET)?.main
+      endpoints.find((e) => e.method === Methods.GET)?.main,
+      protectedComponent
     );
   }, []);
 
@@ -52,7 +55,8 @@ function MyDataGrid<T extends object, U extends object>({
       getOne(
         setRowData,
         endpoints.find((e) => e.method === Methods.GET)?.main,
-        id
+        id,
+        protectedComponent
       );
     }
   };
@@ -63,7 +67,8 @@ function MyDataGrid<T extends object, U extends object>({
         setRowData,
         endpoints.find((e) => e.method === Methods.DELETE)?.main,
         deleteId,
-        setMessage
+        setMessage,
+        protectedComponent
       );
     }
   };

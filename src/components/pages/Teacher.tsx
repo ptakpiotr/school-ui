@@ -35,6 +35,7 @@ function Teacher() {
           endpoints={endpoints}
           insertSection={<TeacherInsertSection/>}
           description={"Lista wszystkich nauczycieli"}
+          protectedComponent={true}
         />
       </details>
     </main>

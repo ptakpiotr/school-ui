@@ -7,8 +7,8 @@ import { ExceptionDetailsContext } from "../../App";
 function ScheduleInsertSection() {
   const [value, setValue] = useState<IScheduleDTO>({
     przedmiot_oddzial_id: -1,
-    terminOd: "",
-    terminDo: "",
+    termin_Od: "",
+    termin_Do: "",
   });
 
   const { setMessage } = useContext(ExceptionDetailsContext);
@@ -39,14 +39,14 @@ function ScheduleInsertSection() {
           />
         </div>
         <div className="insert-section-row">
-          <label htmlFor="terminOd">Termin od</label>
+          <label htmlFor="termin_Od">Termin od</label>
           <input
             type="datetime-local"
-            value={value?.terminOd}
+            value={value?.termin_Od}
             onChange={(e) => {
               setValue((prev: IScheduleDTO | undefined) => {
                 const d = dayjs(e.target.value).format("YYYY-MM-DDThh:mm:ss");
-                return { ...prev!, terminOd: d };
+                return { ...prev!, termin_Od: d };
               });
             }}
             name="terminOd"
@@ -54,17 +54,17 @@ function ScheduleInsertSection() {
           />
         </div>
         <div className="insert-section-row">
-          <label htmlFor="terminDo">Termin do</label>
+          <label htmlFor="termin_Do">Termin do</label>
           <input
             type="datetime-local"
-            value={value?.terminDo}
+            value={value?.termin_Do}
             onChange={(e) => {
               setValue((prev: IScheduleDTO | undefined) => {
                 const d = dayjs(e.target.value).format("YYYY-MM-DDThh:mm:ss");
                 return { ...prev!, terminDo: d };
               });
             }}
-            name="terminDo"
+            name="termin_Do"
             title="Termin do"
           />
         </div>

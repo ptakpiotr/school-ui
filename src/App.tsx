@@ -27,6 +27,9 @@ import Subject from "./components/pages/Subject";
 import Teacher from "./components/pages/Teacher";
 import Student from "./components/pages/Student";
 import { IExceptionDetails, IPagesContextData, IPageTile } from "./Types";
+import Login from "./components/pages/Login";
+import Register from "./components/pages/Register";
+import ProtectedComponent from "./components/common/ProtectedComponent";
 
 export const PagesContext = React.createContext<IPagesContextData>({
   pages: [],
@@ -37,7 +40,7 @@ export const ExceptionDetailsContext = React.createContext<IExceptionDetails>({
 });
 
 function App() {
-  const [pages, _] = useState<IPageTile[]>([
+  const [pages, setPages] = useState<IPageTile[]>([
     {
       href: "/",
       icon: <AiFillHome />,
@@ -118,6 +121,7 @@ function App() {
       <PagesContext.Provider
         value={{
           pages,
+          setPages
         }}
       >
         <BrowserRouter>
@@ -132,7 +136,9 @@ function App() {
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/student" element={<Student />} />
             <Route path="/subject" element={<Subject />} />
-            <Route path="/teacher" element={<Teacher />} />
+            <Route path="/teacher" element={<ProtectedComponent><Teacher /></ProtectedComponent>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
           <NavBottom />
         </BrowserRouter>

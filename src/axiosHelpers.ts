@@ -3,10 +3,17 @@ import DOMPurify from "dompurify";
 
 export function getAllData<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
-  endpoint: string | undefined
+  endpoint: string | undefined,
+  protectedRoute?: boolean
 ) {
   axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}${endpoint}`)
+    .get(`${process.env.REACT_APP_BACKEND_URL}${endpoint}`, {
+      headers: protectedRoute
+        ? {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        : {},
+    })
     .then((dt) => {
       setData(dt.data);
     })
@@ -18,10 +25,17 @@ export function getAllData<T>(
 export function getOne<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
-  id: number
+  id: number,
+  protectedRoute?: boolean
 ) {
   axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}${endpoint}/${id}`)
+    .get(`${process.env.REACT_APP_BACKEND_URL}${endpoint}/${id}`, {
+      headers: protectedRoute
+        ? {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        : {},
+    })
     .then((dt) => {
       setData([dt.data]);
     })
@@ -35,13 +49,21 @@ export function getManyGeneric<T, U>(
   endpoint: string | undefined,
   paramName: string,
   id: U,
-  searchExpression?: string
+  searchExpression?: string,
+  protectedRoute?: boolean
 ) {
   axios
     .get(
       `${process.env.REACT_APP_BACKEND_URL}${endpoint}${
         paramName === "id" ? `/${id}` : ""
-      }${searchExpression ? DOMPurify.sanitize(searchExpression) : ""}`
+      }${searchExpression ? DOMPurify.sanitize(searchExpression) : ""}`,
+      {
+        headers: protectedRoute
+          ? {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+          : {},
+      }
     )
     .then((dt) => {
       console.log(dt.data);
@@ -55,11 +77,21 @@ export function getManyGeneric<T, U>(
 export function getManyWithoutGeneric<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
-  searchExpression?: string
+  searchExpression?: string,
+  protectedRoute?: boolean
 ) {
   axios
     .get(
-      `${process.env.REACT_APP_BACKEND_URL}${endpoint}${searchExpression ? DOMPurify.sanitize(searchExpression) : ""}`
+      `${process.env.REACT_APP_BACKEND_URL}${endpoint}${
+        searchExpression ? DOMPurify.sanitize(searchExpression) : ""
+      }`,
+      {
+        headers: protectedRoute
+          ? {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+          : {},
+      }
     )
     .then((dt) => {
       console.log(dt.data);
@@ -74,10 +106,17 @@ export function deleteOne<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
   id: number,
-  setMsg:React.Dispatch<React.SetStateAction<string>>
+  setMsg: React.Dispatch<React.SetStateAction<string>>,
+  protectedRoute?: boolean
 ) {
   axios
-    .delete(`${process.env.REACT_APP_BACKEND_URL}${endpoint}/${id}`)
+    .delete(`${process.env.REACT_APP_BACKEND_URL}${endpoint}/${id}`, {
+      headers: protectedRoute
+        ? {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        : {},
+    })
     .then((dt) => {
       if (dt.status === 204) {
         axios
@@ -95,17 +134,26 @@ export function deleteOne<T>(
     });
 }
 
-export function addOne<T>(endpoint: string | undefined, value: T,setMsg:React.Dispatch<React.SetStateAction<string>>) {
+export function addOne<T>(
+  endpoint: string | undefined,
+  value: T,
+  setMsg: React.Dispatch<React.SetStateAction<string>>,
+  protectedRoute?: boolean
+) {
   axios
-    .post(`${process.env.REACT_APP_BACKEND_URL}${endpoint}`, value)
+    .post(`${process.env.REACT_APP_BACKEND_URL}${endpoint}`, value, {
+      headers: protectedRoute
+        ? {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        : {},
+    })
     .then((dt) => {
       if (dt.status === 200) {
         window.location.reload();
       }
     })
     .catch((err) => {
-      // console.error(err);
       setMsg(err.message);
     });
 }
-//DOMPurify.sanitize()

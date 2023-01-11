@@ -82,8 +82,8 @@ export interface IScheduleModel {
 
 export interface IScheduleDTO {
   przedmiot_oddzial_id: number;
-  terminOd: string;
-  terminDo: string;
+  termin_Od: string;
+  termin_Do: string;
 }
 
 export interface ISubjectModel {
@@ -142,6 +142,7 @@ export interface IRoomDTO {
 
 export interface IPagesContextData {
   pages: IPageTile[];
+  setPages?: React.Dispatch<React.SetStateAction<IPageTile[]>>;
 }
 
 export interface ISubjectDetailedModel {
@@ -183,4 +184,15 @@ export interface IStudentGradesModel{
 export interface IExceptionDetails{
   message:string;
   setMessage?:React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface ILogin{
+  email:string;
+  password:string;
+}
+
+export interface IRegister{
+  email:string;
+  password:string;
+  confirmPassword:string;
 }
