@@ -1,30 +1,28 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useContext
-} from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/styles/ag-grid.css"; 
-import "ag-grid-community/styles/ag-theme-alpine.css"; 
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
 
-import {FaTrash,FaSearch} from "react-icons/fa";
+import { FaTrash, FaSearch } from "react-icons/fa";
 import { IColumnDef, IEndpoint, Methods } from "../../Types";
-import { deleteOne, getAllData, getOne } from "../../axiosHelpers";
+import { deleteOne, getAllData, getOne, patchOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
+import { CellEditingStoppedEvent } from "ag-grid-community";
 
 interface IProps<T, U> {
   endpoints: IEndpoint[];
-  insertSection:JSX.Element;
-  description:string;
-  protectedComponent?:boolean;
+  insertSection: JSX.Element;
+  description: string;
+  protectedComponent?: boolean;
+  editable?: boolean;
 }
 
 function MyDataGrid<T extends object, U extends object>({
   endpoints,
   insertSection,
   description,
-  protectedComponent
+  protectedComponent,
+  editable,
 }: IProps<T, U>) {
   const gridRef = useRef<AgGridReact>(null);
   const [rowData, setRowData] = useState<T[]>();
@@ -32,7 +30,7 @@ function MyDataGrid<T extends object, U extends object>({
   const [deleteId, setDeleteId] = useState<number>();
 
   const [columnDefs, setColumnDefs] = useState<IColumnDef[]>([]);
-  const {message,setMessage} = useContext(ExceptionDetailsContext);
+  const { message, setMessage } = useContext(ExceptionDetailsContext);
 
   useEffect(() => {
     getAllData(
@@ -45,7 +43,13 @@ function MyDataGrid<T extends object, U extends object>({
   useEffect(() => {
     if (!!rowData) {
       setColumnDefs(
-        Object.keys(rowData[0]).map((c) => ({ field: c } as IColumnDef))
+        Object.keys(rowData[0]).map(
+          (c) =>
+            ({
+              field: c,
+              editable: !c.includes("id") && editable,
+            } as IColumnDef)
+        )
       );
     }
   }, [rowData]);
@@ -72,7 +76,18 @@ function MyDataGrid<T extends object, U extends object>({
       );
     }
   };
-  
+
+  const cellEditingStopped = async (c: CellEditingStoppedEvent<any, any>) => {
+    if(editable && setMessage){
+      let id = c.data.id;
+      let columnName = c.colDef.field;
+      let newValue = c.newValue;
+      let endpoint = endpoints.find(e=>e.method===Methods.PATCH)?.main;
+
+      await patchOne<string>(endpoint,id,columnName!,newValue,setMessage,true);
+    }
+  };
+
   return (
     <>
       <h6>{description}</h6>
@@ -83,10 +98,11 @@ function MyDataGrid<T extends object, U extends object>({
         >
           <AgGridReact
             ref={gridRef}
-            rowData={rowData} 
+            rowData={rowData}
             columnDefs={columnDefs}
             animateRows={true}
             rowSelection="multiple"
+            onCellEditingStopped={cellEditingStopped}
           />
         </div>
         <div className="my-grid-actions-center">
@@ -100,7 +116,9 @@ function MyDataGrid<T extends object, U extends object>({
                   setId(parseInt(e.target.value));
                 }}
               />
-              <button onClick={getOneRecord}>Search <FaSearch /></button>
+              <button onClick={getOneRecord}>
+                Search <FaSearch />
+              </button>
             </span>
           ) : (
             <></>
@@ -120,9 +138,7 @@ function MyDataGrid<T extends object, U extends object>({
           </span>
         </div>
       </div>
-      <div>
-       {insertSection}
-      </div>
+      <div>{insertSection}</div>
       <div className="error-box">{message}</div>
     </>
   );

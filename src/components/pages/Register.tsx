@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { loginSchema } from "../../utils/validation";
 import { PagesContext } from "../../App";
+import { StatusCodes } from 'http-status-codes';
 
 function Register() {
   const [register, setRegister] = useState<IRegister>({
@@ -23,7 +24,7 @@ function Register() {
         axios
           .post(`${process.env.REACT_APP_BACKEND_URL}User/register`, register)
           .then((dt) => {
-            if (dt.status === 200) {
+            if (dt.status === StatusCodes.OK) {
               navigate("/login");
             }
           })
@@ -56,7 +57,7 @@ function Register() {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Hasło"
           value={register.password}
           onChange={(e) => {
             setRegister((prev: IRegister) => {
@@ -70,7 +71,7 @@ function Register() {
         />
         <input
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Potwierdź hasło"
           value={register.confirmPassword}
           onChange={(e) => {
             setRegister((prev: IRegister) => {

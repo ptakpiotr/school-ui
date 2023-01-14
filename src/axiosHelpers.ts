@@ -1,5 +1,6 @@
 import axios from "axios";
 import DOMPurify from "dompurify";
+import { StatusCodes } from "http-status-codes";
 
 export function getAllData<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
@@ -118,7 +119,7 @@ export function deleteOne<T>(
         : {},
     })
     .then((dt) => {
-      if (dt.status === 204) {
+      if (dt.status === StatusCodes.NO_CONTENT) {
         axios
           .get(`${process.env.REACT_APP_BACKEND_URL}${endpoint}`)
           .then((dt) => {
@@ -149,7 +150,40 @@ export function addOne<T>(
         : {},
     })
     .then((dt) => {
-      if (dt.status === 200) {
+      if (dt.status === StatusCodes.OK) {
+        window.location.reload();
+      }
+    })
+    .catch((err) => {
+      setMsg(err.message);
+    });
+}
+
+export function patchOne<T>(
+  endpoint: string | undefined,
+  id:number,
+  path: string,
+  value: T,
+  setMsg: React.Dispatch<React.SetStateAction<string>>,
+  protectedRoute?: boolean
+) {
+  let operations = [
+    {
+      path,
+      op: "replace",
+      value,
+    },
+  ];
+  axios
+    .patch(`${process.env.REACT_APP_BACKEND_URL}${endpoint}/${id}`, operations, {
+      headers: protectedRoute
+        ? {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        : {},
+    })
+    .then((dt) => {
+      if (dt.status === StatusCodes.OK) {
         window.location.reload();
       }
     })

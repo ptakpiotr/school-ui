@@ -41,6 +41,7 @@ function Home() {
             icon={<AiOutlineLogin />}
             locked={false}
             name="Login"
+            polishName="Login"
             additionalStyles="page-home-tile"
           />
         )}
@@ -50,6 +51,7 @@ function Home() {
           icon={<AiOutlineUserAdd />}
           locked={false}
           name="Register"
+          polishName="Rejestracja"
           additionalStyles="page-home-tile"
         />
       </header>

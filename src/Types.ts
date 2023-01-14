@@ -2,6 +2,7 @@ export interface IPageTile {
   href: string;
   icon: JSX.Element;
   name: string;
+  polishName:string;
   locked: boolean;
   additionalStyles?: string;
 }

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { loginSchema } from "../../utils/validation";
 import { PagesContext } from "../../App";
+import { StatusCodes } from 'http-status-codes';
 
 function Login() {
   const [login, setLogin] = useState<ILogin>({
@@ -22,7 +23,7 @@ function Login() {
         axios
           .post(`${process.env.REACT_APP_BACKEND_URL}User/login`, login)
           .then((dt) => {
-            if (dt.status === 200) {
+            if (dt.status === StatusCodes.OK) {
               localStorage.setItem("token", dt.data);
               if(setPages){
                 setPages((pa:IPageTile[])=>{
@@ -69,7 +70,7 @@ function Login() {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Hasło"
           value={login.password}
           onChange={(e) => {
             setLogin((prev: ILogin) => {

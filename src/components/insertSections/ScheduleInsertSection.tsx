@@ -61,7 +61,7 @@ function ScheduleInsertSection() {
             onChange={(e) => {
               setValue((prev: IScheduleDTO | undefined) => {
                 const d = dayjs(e.target.value).format("YYYY-MM-DDThh:mm:ss");
-                return { ...prev!, terminDo: d };
+                return { ...prev!, termin_Do: d };
               });
             }}
             name="termin_Do"

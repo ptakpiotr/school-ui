@@ -1,27 +1,19 @@
-import axios from 'axios';
-import React,{PropsWithChildren,useEffect, useState} from 'react'
+import React, { PropsWithChildren } from "react";
+import { useTokenValidation } from "../../hooks/useTokenValidation";
 
-function ProtectedComponent({children}:PropsWithChildren) {
-    const [tokenValid,setTokenValid] = useState<boolean>(false);
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if(token){
-            axios.post(`${process.env.REACT_APP_BACKEND_URL}User/verifyJWT`,{
-                token
-            }).then((dt)=>{
-                if(dt.status === 200){
-                    setTokenValid(true);
-                }
-            }).catch((_)=>{
+function ProtectedComponent({ children }: PropsWithChildren) {
+  const tokenValid = useTokenValidation();
 
-            });
-        }
-    });
-    if(tokenValid){
-        return(<>{children}</>);
-    }else{
-        return(<>Drogi Użytkowniku, nie posiadasz wystarczających poświadczeń, aby uzyskać dostęp do tej strony.</>);
-    }
+  if (tokenValid) {
+    return <>{children}</>;
+  } else {
+    return (
+      <>
+        Drogi Użytkowniku, nie posiadasz wystarczających poświadczeń, aby
+        uzyskać dostęp do tej strony.
+      </>
+    );
+  }
 }
 
-export default ProtectedComponent
+export default ProtectedComponent;

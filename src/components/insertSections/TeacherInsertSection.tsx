@@ -13,7 +13,7 @@ function TeacherInsertSection() {
 
   const handleClick = () => {
     if(setMessage){
-      addOne("Teacher", value,setMessage);
+      addOne("Teacher", value,setMessage,true);
     }
   };
   return (
@@ -36,7 +36,7 @@ function TeacherInsertSection() {
         <div className="insert-section-row">
         <label htmlFor="nazwisko">Nazwisko</label>
         <input
-          type="number"
+          type="text"
           value={value?.nazwisko}
           onChange={(e) => {
             setValue((prev: ITeacherDTO | undefined) => {

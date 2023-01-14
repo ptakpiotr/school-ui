@@ -6,6 +6,7 @@ import axios from "axios";
 import ReactDropdown from "react-dropdown";
 import 'react-dropdown/style.css';
 import { ExceptionDetailsContext } from "../../App";
+import { StatusCodes } from 'http-status-codes';
 
 function SubjectInsertSection() {
   const [value, setValue] = useState<ISubjectDTO>({
@@ -19,7 +20,7 @@ function SubjectInsertSection() {
   const [rooms,setRooms] = useState<IRoomModel[]>([]);
   useEffect(()=>{
     axios.get(`${process.env.REACT_APP_BACKEND_URL}Misc/room`).then((dt)=>{
-      if(dt.status === 200){
+      if(dt.status === StatusCodes.OK){
         setRooms(dt.data);
       }
     }).catch((err)=>{

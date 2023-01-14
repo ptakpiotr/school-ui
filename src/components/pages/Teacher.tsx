@@ -25,6 +25,10 @@ function Teacher() {
       method: Methods.DELETE,
       main: "Teacher",
     },
+    {
+      method: Methods.PATCH,
+      main: "Teacher",
+    },
   ];
 
   return (
@@ -35,7 +39,8 @@ function Teacher() {
           endpoints={endpoints}
           insertSection={<TeacherInsertSection/>}
           description={"Lista wszystkich nauczycieli"}
-          protectedComponent={true}
+          protectedComponent
+          editable
         />
       </details>
     </main>
