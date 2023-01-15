@@ -1,6 +1,8 @@
 import React from 'react'
 import { IEndpoint, IPaymentTypeDTO, IPaymentTypeModel, IRoomDTO, IRoomModel, Methods } from '../../Types';
 import MyDataGrid from '../common/MyDataGrid';
+import PaymentTypeInsertSection from '../insertSections/PaymentTypeInsertSection';
+import RoomInsertSection from '../insertSections/RoomInsertSection';
 
 function Misc() {
   const paymentTypeEndpoints: IEndpoint[] = [
@@ -14,6 +16,10 @@ function Misc() {
     },
     {
       method: Methods.DELETE,
+      main: "Misc/paymentType",
+    },
+    {
+      method: Methods.PATCH,
       main: "Misc/paymentType",
     },
   ];
@@ -39,15 +45,16 @@ function Misc() {
         <summary>Ogólne informacje o metodach płatności</summary>
         <MyDataGrid<IPaymentTypeModel, IPaymentTypeDTO>
           endpoints={paymentTypeEndpoints}
-          insertSection={<></>}
+          insertSection={<PaymentTypeInsertSection/>}
           description={"Lista wszystkich dostępnych metod płatności"}
+          editable
         />
       </details>
       <details>
         <summary>Ogólne informacje o salach</summary>
         <MyDataGrid<IRoomModel, IRoomDTO>
           endpoints={roomEndpoints}
-          insertSection={<></>}
+          insertSection={<RoomInsertSection />}
           description={"Lista wszystkich sal w jakie wyposażona jest szkoła"}
         />
       </details>

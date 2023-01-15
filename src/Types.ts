@@ -138,7 +138,7 @@ export interface IRoomModel {
 }
 
 export interface IRoomDTO {
-  numerSali: string;
+  numer_sali: string;
 }
 
 export interface IPagesContextData {
