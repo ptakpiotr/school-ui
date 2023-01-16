@@ -6,6 +6,10 @@ import { loginSchema } from "../../utils/validation";
 import { PagesContext } from "../../App";
 import { StatusCodes } from 'http-status-codes';
 
+/**
+ * Komponent odpowiedzialny za prezentację formularza rejestracyjnego
+ * @returns JSX.Element
+ */
 function Register() {
   const [register, setRegister] = useState<IRegister>({
     email: "",

@@ -6,6 +6,11 @@ import {
   SiReact,
   SiTypescript,
 } from "react-icons/si";
+
+/**
+ * Komponent prezentujący sekcję "O stronie"
+ * @returns JSX.Element
+ */
 function About() {
   return (
     <main>

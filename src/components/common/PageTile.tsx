@@ -7,6 +7,11 @@ import { useTokenValidation } from '../../hooks/useTokenValidation';
 
 type IProps = IPageTile;
 
+/**
+ * Komponent będący kafelkiem reprezentującym konkretny panel
+ * @param props
+ * @returns JSX.Element
+ */
 function PageTile({icon,polishName,href,locked,additionalStyles}:IProps) {
   const navigate = useNavigate();
   const { setMessage } = useContext(ExceptionDetailsContext);

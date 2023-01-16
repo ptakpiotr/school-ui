@@ -7,6 +7,11 @@ import {
 } from "../../Types";
 import MyDataGrid from "../common/MyDataGrid";
 import StudentInsertSection from '../insertSections/StudentInsertSection';
+
+/**
+ * Komponent reprezentujący panel studentów
+ * @returns JSX.Element
+ */
 function Student() {
   const endpoints: IEndpoint[] = [
     {

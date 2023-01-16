@@ -1,10 +1,16 @@
 import * as yup from "yup";
 
+/**
+ * schemat walidacyjny dla danych podanych w formularzu zalogowania użytkownika
+ */
 export const loginSchema = yup.object().shape({
     email:yup.string().email().required(),
     password: yup.string().required()
 });
 
+/**
+ * schemat walidacyjny dla danych podanych w formularzu rejestracji użytkownika
+ */
 export const registerSchema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().required(),

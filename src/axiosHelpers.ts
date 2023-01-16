@@ -2,6 +2,12 @@ import axios from "axios";
 import DOMPurify from "dompurify";
 import { StatusCodes } from "http-status-codes";
 
+/**
+ * funkcja odpowiedzialna za pobranie wszystkich danych z danego endpointu
+ * @param setData 
+ * @param endpoint 
+ * @param protectedRoute 
+ */
 export function getAllData<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
@@ -23,6 +29,13 @@ export function getAllData<T>(
     });
 }
 
+/**
+ * funkcja pobierająca informacje tylko dla pojedynczego ID
+ * @param setData 
+ * @param endpoint 
+ * @param id 
+ * @param protectedRoute 
+ */
 export function getOne<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
@@ -45,6 +58,15 @@ export function getOne<T>(
     });
 }
 
+/**
+ * generyczna funkcja pobierająca jedną bądź wiele wartości
+ * @param setData 
+ * @param endpoint 
+ * @param paramName 
+ * @param id 
+ * @param searchExpression 
+ * @param protectedRoute 
+ */
 export function getManyGeneric<T, U>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
@@ -75,6 +97,13 @@ export function getManyGeneric<T, U>(
     });
 }
 
+/**
+ * uproszczona funkcja generyczna pobierająca wartości
+ * @param setData 
+ * @param endpoint 
+ * @param searchExpression 
+ * @param protectedRoute 
+ */
 export function getManyWithoutGeneric<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
@@ -103,6 +132,14 @@ export function getManyWithoutGeneric<T>(
     });
 }
 
+/**
+ * funkcja wywołująca endpoint odpowiedzialny za usunięcie rekordu o konkretnym ID
+ * @param setData 
+ * @param endpoint 
+ * @param id 
+ * @param setMsg 
+ * @param protectedRoute 
+ */
 export function deleteOne<T>(
   setData: React.Dispatch<React.SetStateAction<T[] | undefined>>,
   endpoint: string | undefined,
@@ -135,6 +172,13 @@ export function deleteOne<T>(
     });
 }
 
+/**
+ * funkcja dodająca nowy wpis
+ * @param endpoint 
+ * @param value 
+ * @param setMsg 
+ * @param protectedRoute 
+ */
 export function addOne<T>(
   endpoint: string | undefined,
   value: T,
@@ -159,6 +203,15 @@ export function addOne<T>(
     });
 }
 
+/**
+ * funkcja wywołująca endpoint PATCH - powoduje częściową aktualizację zawartości
+ * @param endpoint 
+ * @param id 
+ * @param path 
+ * @param value 
+ * @param setMsg 
+ * @param protectedRoute 
+ */
 export function patchOne<T>(
   endpoint: string | undefined,
   id:number,

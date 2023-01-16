@@ -2,6 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { StatusCodes } from "http-status-codes";
 
+/**
+ * funkcja odpowiedzialna za zdeterminowanie czy dany token JWT jest poprawny
+ * @returns boolean
+ */
 export function useTokenValidation (){
     const [tokenValid,setTokenValid] = useState<boolean>(false);
 

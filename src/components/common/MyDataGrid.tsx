@@ -9,6 +9,9 @@ import { deleteOne, getAllData, getOne, patchOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
 import { CellEditingStoppedEvent } from "ag-grid-community";
 
+/**
+ * interfejs reprezentujący propsy przyjmowane przez komponent
+ */
 interface IProps<T, U> {
   endpoints: IEndpoint[];
   insertSection: JSX.Element;
@@ -17,6 +20,11 @@ interface IProps<T, U> {
   editable?: boolean;
 }
 
+/**
+ * Komponent będący opakowaniem AgGridReact, wykorzystywany w większości przypadków prezentacji informacji
+ * @param props
+ * @returns JSX.Element
+ */
 function MyDataGrid<T extends object, U extends object>({
   endpoints,
   insertSection,

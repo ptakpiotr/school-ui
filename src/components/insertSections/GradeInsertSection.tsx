@@ -3,6 +3,10 @@ import { IGradeModel } from "../../Types";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
 
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z ocenami
+ * @returns JSX.Element
+ */
 function GradeInsertSection() {
   const [value, setValue] = useState<IGradeModel>({
     id: -1,

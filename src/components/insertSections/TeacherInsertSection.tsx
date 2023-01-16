@@ -3,6 +3,10 @@ import { ITeacherDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
 
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z nauczycielami
+ * @returns JSX.Element
+ */
 function TeacherInsertSection() {
   const [value, setValue] = useState<ITeacherDTO>({
     imie: "",

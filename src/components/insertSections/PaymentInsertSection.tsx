@@ -3,6 +3,10 @@ import { IPaymentDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
 
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z płatnościami
+ * @returns JSX.Element
+ */
 function PaymentInsertSection() {
   const [value, setValue] = useState<IPaymentDTO>({
     rodzaj_id: -1,

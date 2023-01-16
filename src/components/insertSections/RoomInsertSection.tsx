@@ -3,6 +3,10 @@ import { IRoomDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
 
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z salami
+ * @returns JSX.Element
+ */
 function RoomInsertSection() {
   const [value, setValue] = useState<IRoomDTO>({
     numer_sali:""

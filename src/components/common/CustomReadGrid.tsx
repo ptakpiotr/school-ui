@@ -6,11 +6,19 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import { IColumnDef, IEndpoint } from "../../Types";
 import { getAllData } from "../../axiosHelpers";
 
+/**
+ * interfejs reprezentujący propsy przyjmowane przez komponent
+ */
 interface IProps {
   endpoint: IEndpoint;
   description:string;
 }
 
+/**
+ * Komponent będący opakowaniem AgGridReact (tylko funkcjonalność odczytu)
+ * @param props
+ * @returns JSX.Element
+ */
 function CustomReadGrid<T extends object>({ endpoint,description }: IProps) {
   const gridRef = useRef<AgGridReact>(null);
   const [rowData, setRowData] = useState<T[]>();

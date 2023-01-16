@@ -3,6 +3,10 @@ import { IEndpoint, IPaymentDTO, IPaymentModel, Methods } from "../../Types";
 import MyDataGrid from "../common/MyDataGrid";
 import PaymentInsertSection from "../insertSections/PaymentInsertSection";
 
+/**
+ * Komponent odpowiedzialny za wyświetlanie panelu płatności
+ * @returns JSX.Element
+ */
 function Payment() {
   const endpoints: IEndpoint[] = [
     {

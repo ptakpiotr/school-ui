@@ -3,6 +3,11 @@ import { IClassDTO } from "../../Types";
 import dayjs from "dayjs";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
+
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z klasami
+ * @returns JSX.Element
+ */
 function ClassInsertSection() {
   const [value, setValue] = useState<IClassDTO>({
     rok: 0,

@@ -1,6 +1,11 @@
 import React, { PropsWithChildren } from "react";
 import { useTokenValidation } from "../../hooks/useTokenValidation";
 
+/**
+ * Komponent opakowujący inny istniejący komponent - dodaje funkcjonalność autoryzowanego widoku
+ * @param props
+ * @returns JSX.Element
+ */
 function ProtectedComponent({ children }: PropsWithChildren) {
   const tokenValid = useTokenValidation();
 

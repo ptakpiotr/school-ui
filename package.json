@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
-    "@types/dompurify": "^2.4.0"
+    "@types/dompurify": "^2.4.0",
+    "typedoc": "^0.23.24"
   }
 }

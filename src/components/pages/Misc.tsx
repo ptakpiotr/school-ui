@@ -4,6 +4,10 @@ import MyDataGrid from '../common/MyDataGrid';
 import PaymentTypeInsertSection from '../insertSections/PaymentTypeInsertSection';
 import RoomInsertSection from '../insertSections/RoomInsertSection';
 
+/**
+ * Komponent odpowiedzialny za prezentację pozostałych funkcjonalności
+ * @returns JSX.Element
+ */
 function Misc() {
   const paymentTypeEndpoints: IEndpoint[] = [
     {

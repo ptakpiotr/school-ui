@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { IValueFilter } from "../../Types";
 import getFormType from "../../utils/getFormType";
+
+/**
+ * alias będący typem props 
+ */
 type IProps<T> = IValueFilter<T> & {
   applyFilter: React.Dispatch<React.SetStateAction<string>>;
 };
+
+/**
+ * Komponent odpowiedzialny za prezentację pola dla filtrowania wartości
+ * @param props
+ * @returns JSX.Element
+ */ 
 function GridFilter<T>({ fieldName, value, applyFilter }: IProps<T>) {
   const [val, setVal] = useState<string>();
     

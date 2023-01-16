@@ -39,6 +39,10 @@ export const ExceptionDetailsContext = React.createContext<IExceptionDetails>({
   message: "",
 });
 
+/**
+ * funkcja stanowiąca główny komponent programu
+ * @returns JSX.Element
+ */
 function App() {
   const [pages, setPages] = useState<IPageTile[]>([
     {

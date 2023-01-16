@@ -6,6 +6,10 @@ import { loginSchema } from "../../utils/validation";
 import { PagesContext } from "../../App";
 import { StatusCodes } from 'http-status-codes';
 
+/**
+ * Komponent odpowiedzialny za prezentację formularza logowania
+ * @returns JSX.Element
+ */
 function Login() {
   const [login, setLogin] = useState<ILogin>({
     email: "",

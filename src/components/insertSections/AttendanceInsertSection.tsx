@@ -3,6 +3,11 @@ import { IAttendanceDTO } from "../../Types";
 import dayjs from "dayjs";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
+
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z frekwencją
+ * @returns JSX.Element
+ */
 function AttendanceInsertSection() {
   const [value, setValue] = useState<IAttendanceDTO>({
     id: -1,

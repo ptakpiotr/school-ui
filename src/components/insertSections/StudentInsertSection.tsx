@@ -3,6 +3,10 @@ import { IStudentDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
 
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z uczniami
+ * @returns JSX.Element
+ */
 function StudentInsertSection() {
   const [value, setValue] = useState<IStudentDTO>({
     imie: "",

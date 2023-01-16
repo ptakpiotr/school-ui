@@ -12,6 +12,9 @@ import {
 } from "../../axiosHelpers";
 import GridFilter from "./GridFilter";
 
+/**
+ * interfejs reprezentujący propsy przyjmowane przez komponent
+ */
 interface IProps<W> {
   endpoints: IEndpoint[];
   searchParamName: string;
@@ -19,6 +22,11 @@ interface IProps<W> {
   filtersSection?: IValueFilter<W>[];
 }
 
+/**
+ * Komponent będący opakowaniem AgGridReact wraz z funkcjonalnością filtrowania
+ * @param props
+ * @returns JSX.Element
+ */
 function CustomFullGrid<T extends object, U, W = any>({
   endpoints,
   searchParamName,

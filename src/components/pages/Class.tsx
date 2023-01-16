@@ -8,6 +8,10 @@ import {
 import MyDataGrid from "../common/MyDataGrid";
 import ClassInsertSection from "../insertSections/ClassInsertSection";
 
+/**
+ * Komponent odpowiedzialny za wyświetlanie panelu klas
+ * @returns JSX.Element
+ */
 function Class() {
   const endpoints: IEndpoint[] = [
     {

@@ -3,6 +3,10 @@ import { IPaymentTypeDTO } from "../../Types";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
 
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z rodzajami płatności
+ * @returns JSX.Element
+ */
 function PaymentTypeInsertSection() {
   const [value, setValue] = useState<IPaymentTypeDTO>({
     powod:""

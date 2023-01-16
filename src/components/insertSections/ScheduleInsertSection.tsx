@@ -4,6 +4,10 @@ import dayjs from "dayjs";
 import { addOne } from "../../axiosHelpers";
 import { ExceptionDetailsContext } from "../../App";
 
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z planem zajęć
+ * @returns JSX.Element
+ */
 function ScheduleInsertSection() {
   const [value, setValue] = useState<IScheduleDTO>({
     przedmiot_oddzial_id: -1,

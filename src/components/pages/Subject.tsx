@@ -3,6 +3,11 @@ import { IEndpoint, ISubjectDetailedModel, ISubjectDTO, ISubjectModel, Methods }
 import CustomReadGrid from "../common/CustomReadGrid";
 import MyDataGrid from "../common/MyDataGrid";
 import SubjectInsertSection from "../insertSections/SubjectInsertSection";
+
+/**
+ * Komponent reprezentujący panel przedmiotów
+ * @returns JSX.Element
+ */
 function Subject() {
   const endpoints: IEndpoint[] = [
     {

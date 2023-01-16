@@ -12,6 +12,10 @@ import CustomFullGrid from "../common/CustomFullGrid";
 import MyDataGrid from "../common/MyDataGrid";
 import GradeInsertSection from "../insertSections/GradeInsertSection";
 
+/**
+ * Komponent odpowiedzialny za prezentację panelu ocen
+ * @returns JSX.Element
+ */
 function Grade() {
   const endpoints: IEndpoint[] = [
     {

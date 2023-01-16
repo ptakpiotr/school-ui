@@ -9,6 +9,10 @@ import CustomFullGrid from "../common/CustomFullGrid";
 import MyDataGrid from "../common/MyDataGrid";
 import AttendanceInsertSection from "../insertSections/AttendanceInsertSection";
 
+/**
+ * Komponent prezentujący panel frekwencji
+ * @returns JSX.Element
+ */
 function Attendance() {
   const endpoints: IEndpoint[] = [
     {

@@ -7,6 +7,11 @@ import {
 } from "../../Types";
 import MyDataGrid from "../common/MyDataGrid";
 import ScheduleInsertSection from '../insertSections/ScheduleInsertSection';
+
+/**
+ * Komponent reprezentujący panel rozkładu zajęć
+ * @returns JSX.Element
+ */
 function Schedule() {
   const endpoints: IEndpoint[] = [
     {

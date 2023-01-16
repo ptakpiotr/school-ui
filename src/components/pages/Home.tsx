@@ -8,6 +8,11 @@ import {
 import { PagesContext } from "../../App";
 import { IPageTile } from "../../Types";
 import { useNavigate } from "react-router-dom";
+
+/**
+ * Komponent - strona główna
+ * @returns JSX.Element
+ */
 function Home() {
   const { pages, setPages } = useContext(PagesContext);
   const navigate = useNavigate();

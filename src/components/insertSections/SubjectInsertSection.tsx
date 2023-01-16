@@ -8,6 +8,10 @@ import 'react-dropdown/style.css';
 import { ExceptionDetailsContext } from "../../App";
 import { StatusCodes } from 'http-status-codes';
 
+/**
+ * Komponent odpowiedzialny za wprowadzanie informacji związanych z przedmiotami
+ * @returns JSX.Element
+ */
 function SubjectInsertSection() {
   const [value, setValue] = useState<ISubjectDTO>({
     id: -1,
