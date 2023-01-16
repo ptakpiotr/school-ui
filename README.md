@@ -24,3 +24,4 @@ This is the frontend part of project for Databases course. The backend part is l
 ## Usage
 
 In order to visit site, use this [link](https://school-app-ui.netlify.app/).
+![Image](https://raw.githubusercontent.com/ptakpiotr/school-ui/master/ui.jpg)
