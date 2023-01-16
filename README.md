@@ -1,4 +1,4 @@
-# School UI
+# School UI ![Status](https://img.shields.io/website?down_color=tomato&up_color=aqua&up_message=up&url=https%3A%2F%2Fschool-app-ui.netlify.app%2F)
 
 ## Table of contents
 
@@ -23,4 +23,4 @@ This is the frontend part of project for Databases course. The backend part is l
 
 ## Usage
 
-In order to visit site, use this [link](#).
+In order to visit site, use this [link](https://school-app-ui.netlify.app/).
