@@ -117,7 +117,7 @@ function MyDataGrid<T extends object, U extends object>({
                 }}
               />
               <button onClick={getOneRecord}>
-                Search <FaSearch />
+                Szukaj <FaSearch />
               </button>
             </span>
           ) : (
@@ -133,7 +133,7 @@ function MyDataGrid<T extends object, U extends object>({
               }}
             />
             <button className="danger-btn" onClick={deleteOneRecord}>
-              Delete <FaTrash />
+              Usuń <FaTrash />
             </button>
           </span>
         </div>

@@ -131,7 +131,7 @@ export function deleteOne<T>(
       }
     })
     .catch((err) => {
-      setMsg(err.message);
+      alert(err.message);
     });
 }
 

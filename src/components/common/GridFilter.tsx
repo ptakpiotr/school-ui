@@ -42,7 +42,7 @@ function GridFilter<T>({ fieldName, value, applyFilter }: IProps<T>) {
         }}
       />
       <button className="apply-btn" onClick={setFilterValue}>
-        Apply
+        Zaaplikuj
       </button>
     </div>
   );

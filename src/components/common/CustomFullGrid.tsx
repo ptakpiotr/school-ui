@@ -58,8 +58,6 @@ function CustomFullGrid<T extends object, U, W = any>({
         searchExpression
       );
     } else {
-
-        console.log(searchExpression);
       getManyWithoutGeneric(
         setRowData,
         endpoints.find((e) => e.method === Methods.GETSINGLE)?.main,
@@ -88,9 +86,10 @@ function CustomFullGrid<T extends object, U, W = any>({
             className="clear-filters-btn"
             onClick={() => {
               setSearchExpression("");
+              window.location.reload();
             }}
           >
-            Clear all filters <FaTrashAlt />
+            Usuń filtry <FaTrashAlt />
           </button>
           {!!endpoints.find((e) => e.method === Methods.GETSINGLE) ? (
             <>
@@ -105,7 +104,7 @@ function CustomFullGrid<T extends object, U, W = any>({
                   disabled={searchParamName === ""}
                 />
                 <button onClick={getOneRecord}>
-                  Search <FaSearch />
+                  Szukaj <FaSearch />
                 </button>
               </span>
               <span>
