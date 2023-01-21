@@ -37,7 +37,7 @@ function RoomInsertSection() {
           />
         </div>
       </div>
-      <button onClick={handleClick}>Add</button>
+      <button onClick={handleClick}>Dodaj</button>
     </div>
   );
 }

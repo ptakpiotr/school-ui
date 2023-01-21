@@ -64,7 +64,7 @@ function SubjectInsertSection() {
             }} value={value.numer_sali} />
         </div>
       </div>
-      <button onClick={handleClick}>Add</button>
+      <button onClick={handleClick}>Dodaj</button>
     </div>
   );
 }
