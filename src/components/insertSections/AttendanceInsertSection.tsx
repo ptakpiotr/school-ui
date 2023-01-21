@@ -19,7 +19,7 @@ function AttendanceInsertSection() {
 
   const handleClick = () => {
     if (setMessage) {
-      addOne("Attendance", value, setMessage);
+      addOne("Attendance", value, setMessage,false);
     }
   };
   return (

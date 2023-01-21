@@ -25,7 +25,7 @@ export function getAllData<T>(
       setData(dt.data);
     })
     .catch((err) => {
-      console.error(err);
+      console.error(err?.response?.data || err);
     });
 }
 
@@ -54,7 +54,7 @@ export function getOne<T>(
       setData([dt.data]);
     })
     .catch((err) => {
-      console.error(err);
+      console.error(err?.response?.data || err);
     });
 }
 
@@ -93,7 +93,7 @@ export function getManyGeneric<T, U>(
       setData(dt.data);
     })
     .catch((err) => {
-      console.error(err);
+      console.error(err?.response?.data || err);
     });
 }
 
@@ -124,11 +124,10 @@ export function getManyWithoutGeneric<T>(
       }
     )
     .then((dt) => {
-      console.log(dt.data);
       setData(dt.data);
     })
     .catch((err) => {
-      console.error(err);
+      console.error(err?.response?.data || err);
     });
 }
 
@@ -168,7 +167,8 @@ export function deleteOne<T>(
       }
     })
     .catch((err) => {
-      alert(err.message);
+      let errMsg = `${err.message} ${err?.response?.data || err}`;
+      setMsg(errMsg);
     });
 }
 
@@ -199,7 +199,9 @@ export function addOne<T>(
       }
     })
     .catch((err) => {
-      setMsg(err.message);
+      console.log(err);
+      let errMsg = `${err.message} ${err?.response?.data || err}`;
+      setMsg(errMsg);
     });
 }
 
@@ -241,6 +243,7 @@ export function patchOne<T>(
       }
     })
     .catch((err) => {
-      setMsg(err.message);
+      let errMsg = `${err.message} ${err?.response?.data || err}`;
+      setMsg(errMsg);
     });
 }
