@@ -292,3 +292,22 @@ export interface IRegister {
   password: string;
   confirmPassword: string;
 }
+
+/**
+ * model reprezentujacy prace ucznia
+ */
+export interface IUserGradeModel{
+  id: number;
+  imieNazwiskoUcznia:string;
+  nazwaPrzedmiotu:string;
+  nazwa_Pracy:string;
+}
+
+/**
+ * DTO dla modelu IUserGradeModel
+ */
+export interface IUserGradeDTO{
+  uczen_Id : number;
+  przedmiot_Oddzial_Id : number;
+  nazwa_Pracy:string;
+}

@@ -6,11 +6,13 @@ import {
   IGradeModel,
   IGroupedGradesModel,
   IStudentGradesModel,
+  IUserGradeModel,
   Methods,
 } from "../../Types";
 import CustomFullGrid from "../common/CustomFullGrid";
 import MyDataGrid from "../common/MyDataGrid";
 import GradeInsertSection from "../insertSections/GradeInsertSection";
+import UserGradeInsertSection from "../insertSections/UserGradeInsertSection";
 
 /**
  * Komponent odpowiedzialny za prezentację panelu ocen
@@ -50,6 +52,17 @@ function Grade() {
     },
   ];
 
+  const customEndpointsGetUserGrades : IEndpoint [] = [
+    {
+      method:Methods.GET,
+      main:"Grade/usergrades"
+    },
+    {
+      method:Methods.POST,
+      main:"Grade/usergrades"
+    }
+  ]
+
   return (
     <main>
       <details>
@@ -83,6 +96,10 @@ function Grade() {
           endpoints={customEndpointsGetStudentGrades}
           searchParamName="id"
         />
+      </details>
+      <details>
+        <summary>Prace wszystkich uczniow</summary>
+        <CustomFullGrid<IUserGradeModel,any> endpoints={customEndpointsGetUserGrades} searchParamName="" insertSection={<UserGradeInsertSection />} />
       </details>
     </main>
   );
