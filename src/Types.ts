@@ -311,3 +311,18 @@ export interface IUserGradeDTO{
   przedmiot_Oddzial_Id : number;
   nazwa_Pracy:string;
 }
+
+/**
+ * Model dla przedmiot-oddzial
+ */
+export interface ISubjectClassModel{
+  rok:number;
+  nauczyciel:string;
+  nazwaPrzedmiotu:string;
+}
+
+export interface ISubjectClassDTO{
+  klasa_id:number;
+  nauczyciel_id:number;
+  przedmiot_id:number;
+}

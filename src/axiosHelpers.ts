@@ -168,6 +168,7 @@ export function deleteOne<T>(
     })
     .catch((err) => {
       let errMsg = `${err.message} ${err?.response?.data || err}`;
+      alert(errMsg);
       setMsg(errMsg);
     });
 }
@@ -201,6 +202,7 @@ export function addOne<T>(
     .catch((err) => {
       console.log(err);
       let errMsg = `${err.message} ${err?.response?.data || err}`;
+      alert(errMsg);
       setMsg(errMsg);
     });
 }

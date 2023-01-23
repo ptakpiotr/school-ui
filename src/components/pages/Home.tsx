@@ -31,14 +31,14 @@ function Home() {
         }
       });
     }
-    navigate("/");
+    window.location.href = "/";
   };
   return (
     <main className="home-main">
       <header className="home-header">
         {localStorage.getItem("token") ? (
           <button className="danger-btn" onClick={handleLogout}>
-            Logout <AiOutlineLogout />
+            Wyloguj <AiOutlineLogout />
           </button>
         ) : (
           <PageTile

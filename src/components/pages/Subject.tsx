@@ -1,7 +1,9 @@
 import React from "react";
-import { IEndpoint, ISubjectDetailedModel, ISubjectDTO, ISubjectModel, Methods } from "../../Types";
+import { IEndpoint, ISubjectClassModel, ISubjectDetailedModel, ISubjectDTO, ISubjectModel, Methods } from "../../Types";
+import CustomFullGrid from "../common/CustomFullGrid";
 import CustomReadGrid from "../common/CustomReadGrid";
 import MyDataGrid from "../common/MyDataGrid";
+import SubjectClassesInsertSection from "../insertSections/SubjectClassesInsertSection";
 import SubjectInsertSection from "../insertSections/SubjectInsertSection";
 
 /**
@@ -28,6 +30,17 @@ function Subject() {
     },
   ];
 
+  const subjectClassesEndpoints : IEndpoint []= [
+    {
+      method: Methods.GET,
+      main: "Subject/subjectClasses",
+    },
+    {
+      method: Methods.POST,
+      main: "Subject/subjectClasses",
+    }
+  ]
+
   return (
     <main>
       <details>
@@ -47,6 +60,14 @@ function Subject() {
             main:"Subject/detailed"
           }}
           description={"Szczegółowe informacje o przedmiocie m.in. nauczyciel prowadzący dany przedmiot"}
+        />
+      </details>
+      <details>
+        <summary>Informacje o przedmiotach w oddzialach</summary>
+        <CustomFullGrid<ISubjectClassModel,ISubjectDTO>
+          endpoints={subjectClassesEndpoints}
+          searchParamName=""
+          insertSection={<SubjectClassesInsertSection />}
         />
       </details>
     </main>
